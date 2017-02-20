@@ -6,6 +6,10 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
+import { PageLoader } from './loader/loader.component';
+import { LoginHeader } from "./headers/login/loginheader.component";
+import { ProfileHeader } from "./headers/profile/profileheader.component";
+
 
 @NgModule({
   imports: [
@@ -16,11 +20,16 @@ import { AppRoutingModule, routedComponents } from './app-routing.module';
   ],
   declarations: [
     AppComponent,
-    routedComponents
+    routedComponents,
+    PageLoader,
+    LoginHeader,
+    ProfileHeader,
   ],
   providers: [
- 
+    
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

@@ -4,11 +4,12 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-//import 'rxjs/add/operator/throw';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class LoginService {
-	private loginUrl = 'http://localhost/login';
+	private loginUrl = 'http://localhost:3000/login';
+	private getUsersUrl = 'http://localhost:3000/users';
 	constructor(private http: Http){}
 
 	login(body: Object): Observable<any> {
@@ -21,5 +22,5 @@ export class LoginService {
 		.map((res:Response) => res.json()) // ...and calling .json() on the response to return data
 		.catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
 
-	}
+	} 
 }

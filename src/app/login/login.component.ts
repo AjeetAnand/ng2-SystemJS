@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 import { LoginService } from './login.service';
 
@@ -6,17 +7,27 @@ import { LoginService } from './login.service';
 	moduleId: module.id,
 	selector: 'my-login',
 	templateUrl: 'login.component.html',
-	styleUrls: ['login.component.css']
+	styleUrls: ['login.component.css'],
+	providers: [LoginService]
 })
 export class MyLoginComponent {
 
 	email: string;
 	password: string;
-	constructor( loginServices: LoginService ) {
-		console.log(loginService);
-	}
+	loginError: string;
+	constructor(
+  	private loginService: LoginService,
+  	private router: Router
+  ){}
 
 	login(): any {
-		console.log(this.email, this.password);
+		let loginData = {email: this.email, password: this.password}
+		this.loginService.login(loginData).subscribe(res => {
+			//console.log(res);
+			window.sessionStorage.setItem('token', res.token);
+			this.router.navigateByUrl('/users');
+		}, err => {
+			this.loginError = err;
+		});
 	}
 }
