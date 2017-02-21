@@ -4,8 +4,6 @@ import {Router} from '@angular/router';
 import { UserService } from './user.service';
 import { Constant } from "../app.constant";
 
-import { UserService } from './user.service';
-
 @Component({
 	moduleId: module.id,
 	selector: 'user-list',
